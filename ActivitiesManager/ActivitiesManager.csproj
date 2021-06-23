@@ -143,6 +143,10 @@
     <Compile Include="Migrations\202106181249452_Annotations.Designer.cs">
       <DependentUpon>202106181249452_Annotations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106231943578_virtual.cs" />
+    <Compile Include="Migrations\202106231943578_virtual.Designer.cs">
+      <DependentUpon>202106231943578_virtual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Concrete\Activity.cs" />
     <Compile Include="Models\Types\ActivityType.cs" />
@@ -231,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106181249452_Annotations.resx">
       <DependentUpon>202106181249452_Annotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106231943578_virtual.resx">
+      <DependentUpon>202106231943578_virtual.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

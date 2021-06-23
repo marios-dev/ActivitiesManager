@@ -73,7 +73,6 @@ namespace ActivitiesManager.Controllers
         {
             ViewBag.ActivityTypeID = new SelectList(db.ActivityTypes, "ID", "Description");
             ViewBag.CustomerID = new SelectList(db.Customers, "ID", "Name");
-            //ViewBag.ActivityID = new SelectList(db.Activities, "ID", "Description");
             return View();
         }
 

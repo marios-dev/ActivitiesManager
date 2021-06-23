@@ -25,10 +25,6 @@ namespace ActivitiesManager.Controllers
             ViewBag.TypeSortParm = String.IsNullOrEmpty(sortOrder) || sortOrder == "type_asc" ? "type_desc" : "type_asc";
             var customers = from c in db.Customers
                             select c;
-            //var customerTypes = from t in db.CustomerTypes
-            //                    select t;
-            //var customerTypeDesc = customerTypes.Include(t => t.Description);
-            //customers = customers.Include(c => c.CustomerType.Description);
             switch (sortOrder)
             {
                 case "name_desc":
@@ -59,7 +55,6 @@ namespace ActivitiesManager.Controllers
                 || c.Address.Contains(searchString) 
                 || c.CustomerType.Description.Contains(searchString));
             }
-
             return View(customers.ToList());
             //filtered list ends here
         }
@@ -75,19 +70,12 @@ namespace ActivitiesManager.Controllers
             //find specific customer's details
             var customers = db.Customers.ToList();
             var customer = customers.Find(c => c.ID == id);
-            var customerID = customers.Where(c => c.ID == id).Select(c => c.ID).FirstOrDefault();
-            var customerName = customers.Where(c => c.ID == id).Select(c => c.Name).FirstOrDefault();
-            var customerTypeID = customers.Where(c => c.ID == id).Select(c => c.CustomerTypeID).FirstOrDefault();
             var customerType = customers.Where(c => c.ID == id).Select(c => c.CustomerType).FirstOrDefault(); ;
-            var customerAddress = customers.Where(c => c.ID == id).Select(c => c.Address).FirstOrDefault();
 
             //find specific customer's activities
             var activities = db.Activities.ToList();
-            var activity = activities.Find(a => a.CustomerID == customerID);
-            var activityTypeID = activities.Where(a => a.CustomerID == customerID).Select(a => a.ActivityTypeID).FirstOrDefault();
-            var activityType = activities.Where(a => a.CustomerID == customerID).Select(a => a.ActivityType).FirstOrDefault();
-            var activityStartDate = activities.Where(a => a.CustomerID == customerID).Select(a => a.StartDate).FirstOrDefault();
-            var activityEndDate = activities.Where(a => a.CustomerID == customerID).Select(a => a.EndDate).FirstOrDefault();
+            var activity = activities.Find(a => a.CustomerID == id);
+            var activityType = activities.Where(a => a.CustomerID == id).Select(a => a.ActivityType).FirstOrDefault();
             var viewmodel = new ActivityCustomerViewmodel()
             {
                 Customer = customer,
@@ -96,16 +84,6 @@ namespace ActivitiesManager.Controllers
                 ActivityType = activityType
             };
             return View(viewmodel);
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //Customer customer = db.Customers.Find(id);
-            //if (customer == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(customer);
         }
 
         // GET: Customers/Create
@@ -144,19 +122,12 @@ namespace ActivitiesManager.Controllers
             //find specific customer's details
             var customers = db.Customers.ToList();
             var customer = customers.Find(c => c.ID == id);
-            var customerID = customers.Where(c => c.ID == id).Select(c => c.ID).FirstOrDefault();
-            var customerName = customers.Where(c => c.ID==id).Select(c=>c.Name).FirstOrDefault();
-            var customerTypeID = customers.Where(c => c.ID==id).Select(c=>c.CustomerTypeID).FirstOrDefault();
-            var customerType = customers.Where(c => c.ID == id).Select(c => c.CustomerType).FirstOrDefault(); ;
-            var customerAddress = customers.Where(c => c.ID==id).Select(c=>c.Address).FirstOrDefault();
+            var customerType = customers.Where(c => c.ID == id).Select(c => c.CustomerType).FirstOrDefault();
             
             //find specific customer's activities
             var activities = db.Activities.ToList();
-            var activity = activities.Find(a => a.CustomerID == customerID);
-            var activityTypeID = activities.Where(a => a.CustomerID == customerID).Select(a => a.ActivityTypeID).FirstOrDefault();
-            var activityType = activities.Where(a => a.CustomerID == customerID).Select(a => a.ActivityType).FirstOrDefault();
-            var activityStartDate = activities.Where(a => a.CustomerID == customerID).Select(a => a.StartDate).FirstOrDefault();
-            var activityEndDate = activities.Where(a => a.CustomerID == customerID).Select(a => a.EndDate).FirstOrDefault();
+            var activity = activities.Find(a => a.CustomerID == id);
+            var activityType = activities.Where(a => a.CustomerID == id).Select(a => a.ActivityType).FirstOrDefault();
             var viewmodel = new ActivityCustomerViewmodel()
             {
                 Customer = customer,
@@ -165,14 +136,6 @@ namespace ActivitiesManager.Controllers
                 ActivityType = activityType
             };
             return View(viewmodel);
-
-            //Customer customer = db.Customers.Find(id);
-            //if (customer == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //ViewBag.CustomerTypeID = new SelectList(db.CustomerTypes, "ID", "Description", customer.CustomerTypeID);
-            //return View(customer);
         }
 
         // POST: Customers/Edit/5

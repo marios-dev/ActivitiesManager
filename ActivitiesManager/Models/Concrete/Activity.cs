@@ -18,6 +18,6 @@ namespace ActivitiesManager.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime EndDate { get; set; }
         public int ActivityTypeID { get; set; }
-        public ActivityType ActivityType { get; set; }
+        public virtual ActivityType ActivityType { get; set; }
     }
 }
