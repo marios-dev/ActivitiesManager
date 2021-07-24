@@ -1,10 +1,9 @@
 ﻿------------------DONE---------------------
-1.business models as asked
+1.Business models as asked
 2.Customer Edit View is the one that controlls the customer and his activities
 3.Customer Sorting methods for name, type and address done in Customer Controller / Index
 4.Customer Edit form is the one to perform actions for changes but doesnt save yet in the database (in Progress)
 5.Activities can be all viewed in Activities Index View alongside their sorting methods
 
 ------------------PROBLEMS---------------------
-Customer Edit form doesnt save to database
-customer Details activity description doesnt show
+Customer Edit form doesnt save to database, new approach is required
