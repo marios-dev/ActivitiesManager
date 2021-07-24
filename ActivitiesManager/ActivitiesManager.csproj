@@ -149,9 +149,9 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Concrete\Activity.cs" />
-    <Compile Include="Models\Types\ActivityType.cs" />
+    <Compile Include="Models\Concrete\ActivityType.cs" />
     <Compile Include="Models\Concrete\Customer.cs" />
-    <Compile Include="Models\Types\CustomerType.cs" />
+    <Compile Include="Models\Concrete\CustomerType.cs" />
     <Compile Include="Models\ViewModels\ActivityCustomerViewmodel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
